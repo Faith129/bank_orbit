@@ -1,0 +1,19 @@
+--------------------------------
+--
+-- DidiSoft OpenPGP Library for Java 
+-- build for WebLogic Server (WLS) 12.2.1.3 and below
+--
+--------------------------------
+
+1. Introduction
+ This is a separate version of DidiSoft OpenPGP Library for Java 
+ created for WebLogic 12.2.1.3 and below where jar files, 
+ compiled with JDK 9 and above (with module-info) cannot be installed
+
+2. Setup
+ Copy the JAR files from this folder into the WebLogic domain \lib folder
+ (See: https://docs.oracle.com/cd/E21764_01/web.1111/e13706/classloading.htm#WLPRG324)
+
+3. API
+ In your EAR or WAR projects you can use the same API as in the standard version of 
+ DidiSoft OpenPGP Library for Java: https://didisoft.com/java-openpgp/examples/

@@ -3,22 +3,24 @@ package com.orbit.controller;
 //import com.orbit.dto.request.AccountRequest;
 import com.orbit.dto.request.TransactionRequest;
 //import com.orbit.dto.response.ServiceResponse;
-import com.orbit.enums.TransactionType;
 //import com.orbit.services.transaction.TransactionsService;
 //import com.orbit.services.transactionsOld.AccountService;
 //import com.orbit.services.transactionsOld.BalanceService;
 //import com.orbit.services.transactionsOld.TransactionService;
 //import io.swagger.annotations.ApiOperation;
-import com.orbit.transaction.FundTransferOpsService;
+import com.orbit.transaction.BalanceEnquiryService;
+import com.orbit.transaction.FundTransEService;
 import com.orbit.transaction.TransactionsService;
+import com.orbit.transaction.TransferOpsService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.security.auth.login.AccountNotFoundException;
 import javax.validation.Valid;
 
 //import javax.validation.Valid;
+@RequiredArgsConstructor
 @CrossOrigin
 @RestController
 //@RequestMapping("/api/v1")
@@ -29,17 +31,24 @@ public class ServiceController {
 //@Autowired
 //private TransactionService transactionService;
 //
-//@Autowired
-//private AccountService accountService;
-//    @Autowired
-//    TransactionsService transactionsService;
+@Autowired
+BalanceEnquiryService balanceEnquiryService;
+    private final TransactionsService transactionsService;
+  private final TransferOpsService transferOpsService;
+    private final FundTransEService fundTransEService;
+//private final BalanceEnquiryService balanceEnquiryService;
 
-    @Autowired
-    FundTransferOpsService fundTransferOpsService;
+//    @Autowired
+//    FundTransferOpsService fundTransferOpsService;
 
     @PostMapping("/transfer")
     public ResponseEntity<?> transfer(@Valid @RequestBody TransactionRequest request)  {
-        return ResponseEntity.ok(fundTransferOpsService.performTransaction(request));
+        return ResponseEntity.ok(fundTransEService.executeFundTransfer(request));
+    }
+
+    @GetMapping("/balance/{accountNumber}")
+    public ResponseEntity<?> getBalance(@PathVariable String accountNumber)  {
+        return ResponseEntity.ok(balanceEnquiryService.getBalance(accountNumber));
     }
 //
 //    @GetMapping("/balance/{accountNo}")

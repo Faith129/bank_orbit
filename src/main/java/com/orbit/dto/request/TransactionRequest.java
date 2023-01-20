@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TransactionRequest {
+    private String sessionId;
     private String transactionRef;
     private String accountNo;
     private String tranAppl;
@@ -21,9 +22,21 @@ public class TransactionRequest {
     private BigDecimal transAmount;
     private String tranStatus;
     private String narration;
-    private Boolean transactionType;
+    private String transactionType;
     private LocalDate transactionDate;
     private String debitCrditFlag;
     private String responseCode;
-    private Boolean isReversal;
+    private boolean isReversal;
+    private String destinationInstitutionCode;
+    private int channelCode;
+    private BigDecimal transactionFee;
+    private String nameEnquiryRef;
+    private String beneficiaryBankVerificationNumber;
+    private String beneficiaryKYCLevel;
+    private String debitAccountName;
+    private String debitBankVerificationNumber;
+    private String beneficiaryAccountName;
+    private String originatorAccountName;
+
+
 }
